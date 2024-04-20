@@ -1,25 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text} from 'react-native';
+import InputMessage from './components/InputMessage';
+
 
 export default function App() {
+  
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.heading}>EasyLancer</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>EasyLancer</Text>
       </View>
-      <StatusBar style="auto" />
+      <InputMessage />
+      <StatusBar style='auto'/>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  heading: {
-    fontSize: 30,
-  }
+  header: {
+    paddingTop: 40,
+    paddingBottom: 20,
+    backgroundColor: '#3498db',
+    alignItems: 'center',
+  },
+  headerText: {
+    fontSize: 20,
+    color: '#fff',
+  },
 });
