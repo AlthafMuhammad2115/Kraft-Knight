@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export default function InputMessage({handleButtonPress}) {
+export default function SendMessage() {
     const [selectedOption, setSelectedOption] = useState('');
     const [textInputValue, setTextInputValue] = useState('');
 
-    
+    const handleButtonPress = () => {
+        // Handle button press action here
+        console.log('Message Send');
+    };
 
     return (
         <View style={styles.content}>

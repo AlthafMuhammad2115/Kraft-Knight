@@ -1,17 +1,25 @@
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import InputMessage from './components/InputMessage';
+import SendMessage from './components/SendMessage';
+
 
 
 export default function App() {
-  
+
+  const [state, setState] = useState(false);
+  const handleButtonPress = () => {
+    setState(true);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>EasyLancer</Text>
       </View>
-      <InputMessage />
-      <StatusBar style='auto'/>
+      {state ? <SendMessage /> : <InputMessage handleButtonPress={handleButtonPress} />}
+      <StatusBar style='auto' />
     </View>
   );
 }
