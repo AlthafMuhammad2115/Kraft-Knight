@@ -6,7 +6,6 @@ export default function InputMessage({handleButtonPress}) {
     const [selectedOption, setSelectedOption] = useState('');
     const [textInputValue, setTextInputValue] = useState('');
 
-    
 
     return (
         <View style={styles.content}>
