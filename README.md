@@ -1,4 +1,4 @@
-=# Kraft-Knight
+# Kraft-Knight
 24hrs Hackathon
 
 ## Abstract
