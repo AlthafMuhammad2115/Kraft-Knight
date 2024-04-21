@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export default function InputMessage({handleButtonPress}) {
-    const [selectedOption, setSelectedOption] = useState('');
-    const [textInputValue, setTextInputValue] = useState('');
 
+export default function InputMessage({ handleButtonPress, setPrompt }) {
+    const [selectedOption, setSelectedOption] = useState('write a message to ask the client about his budget. ');
+    const [textInputValue, setTextInputValue] = useState('');
+    const [temPrompt, setTemPrompt] = useState('');
+
+    const handlePress = () => {
+        // if(selectedOption == 'Budget'){
+        //     setTemPrompt('write a message to ask the client about his budget. ');
+        // }else if(selectedOption == 'Quotation'){
+        //     setTemPrompt('write a quotation message to tell the client about the total price for the project in detail with each price for hours. ');
+        // }else if(selectedOption == 'Deadline'){
+        //     setTemPrompt('write a message to ask the client to extend the deadline very politely. ');
+        // }
+        // console.log(textInputValue);
+        const prompt = selectedOption+textInputValue;
+        console.log(prompt, "outside");
+        setPrompt(prompt);
+        handleButtonPress();
+    }
+    //const api_key = OPENAI_API_KEY;
 
     return (
         <View style={styles.content}>
             <Picker
                 selectedValue={selectedOption}
-                onValueChange={(itemValue) => setSelectedOption(itemValue)}
+                onValueChange={(itemValue, itemIndex) => {setSelectedOption(itemValue)}}
                 style={styles.dropdown}
             >
-                <Picker.Item label="Ask for Budget" value="Budget" />
-                <Picker.Item label="Price Quotation" value="Quotation" />
-                <Picker.Item label="Deadline Extension" value="Deadline" />
+                <Picker.Item label="Ask for Budget" value='write a message to ask the client about his budget. ' />
+                <Picker.Item label="Price Quotation" value='write a quotation message to tell the client about the total price for the project in detail with each price for hours. ' />
+                <Picker.Item label="Deadline Extension" value='write a message to ask the client to extend the deadline very politely. ' />
             </Picker>
             <TextInput
                 style={styles.input}
@@ -24,7 +41,7 @@ export default function InputMessage({handleButtonPress}) {
                 value={textInputValue}
                 placeholder="Enter Message Content"
             />
-            <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
+            <TouchableOpacity style={styles.button} onPress={handlePress}>
                 <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
         </View>
