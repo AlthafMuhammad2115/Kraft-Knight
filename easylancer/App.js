@@ -15,7 +15,7 @@ export default function App() {
     if(prompt == 'noprompt' || prompt.length <= 0){
       return null;
     }
-    const apiKey = 'sk-proj-3W9KhlbKcNvUAlt9YByST3BlbkFJuumTidXt6Rtp8BIZgtE1';
+    const apiKey = '';
     const client = axios.create({
       headers: {
         'Content-Type': 'application/json',
@@ -75,5 +75,3 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
-
-//sk-proj-4JCm1P2p1PsLS3xAlxbZT3BlbkFJ0l9K3L1PcfrmIXf6BcJX
